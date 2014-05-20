@@ -19,7 +19,7 @@ exports.index = function(req, res){
             res.send('Ok');
         });
     } else if (sns.Type == 'Notification') {
-        var message = '';
+        var message = sns.TopicArn.substring(sns.TopicArn.lastIndexOf(':')) + ' : ';
         if (sns.Subject === undefined) {
             message = JSON.stringify(sns.Message);
         } else {
