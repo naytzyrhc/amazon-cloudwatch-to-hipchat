@@ -23,7 +23,7 @@ exports.index = function(req, res){
         if (sns.Subject === undefined) {
             message = JSON.stringify(sns.Message);
         } else {
-            message = sns.Subject;
+            message = sns.Subject + " " + JSON.stringify(sns.Message);
         }
 
         var hipchatUrl = 'https://api.hipchat.com/v1/rooms/message?' +
