@@ -21,9 +21,9 @@ exports.index = function(req, res){
     } else if (sns.Type == 'Notification') {
         var message = sns.TopicArn.substring(sns.TopicArn.lastIndexOf(':')) + ' : ';
         if (sns.Subject === undefined) {
-            message = JSON.stringify(sns.Message);
+            message += JSON.stringify(sns.Message);
         } else {
-            message = sns.Subject + " " + JSON.stringify(sns.Message);
+            message += sns.Subject + " " + JSON.stringify(sns.Message);
         }
 
         var hipchatUrl = 'https://api.hipchat.com/v1/rooms/message?' +
